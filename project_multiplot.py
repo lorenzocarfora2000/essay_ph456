@@ -1,11 +1,38 @@
 import matplotlib.pyplot as plt
 import project_functions as pf
 
-mu_list = [-0.1, -1, -10] #mu values
+"""
+mu_list contains a sample of 3 mu parameters to plot. x0 and v0 are the initial
+amplitude and velocity.
+
+The graphs shown on the essay are for:
+    
+mu_list = [0.1, 1, 10] & x0, v0 = 0.01, 0   or x0, v0 = 3, 1 (fig.1-2)    
+
+mu_list = [-0.1, -1, -10] & x0, v0 = 0.01, 0   (fig. 6-7)    
+
+tf is the final time, at which the ODE solver will stop.
+h is the imposed time interval.
+"""
+mu_list = [0.1, 1, 10] #mu values
 x0, v0 = 0.01, 0
 
 tf = 180
 h = 0.01
+
+"""
+a for loop calculates the phase and time evolution of the VdP Oscillator for 
+the imposed initial conditions and for the 3 different requested mu values.
+The sol variable contains all the data of interest, which is then expressed in:
+-t: the time values considered when calculating the evolution of the system;
+-x: the VdP amplitude value, calculated as a function of t;
+-v: the velocity of the system, calculated as a function of t.
+
+The retrieved arrays are then plotted. portrait contains all the subplots
+of amplitude over time, and is hence used to visualise the time evolution,
+while portrait2 contains the subplots of the velocity over amplitude, hence
+visualising the phase evolution.
+"""
 
 #phase plots for different initial positions and mu:
 portrait = fig,(ax1, ax2, ax3) = plt.subplots(3, 1, figsize = (12, 10))

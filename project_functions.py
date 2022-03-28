@@ -1,5 +1,14 @@
 import numpy as np
 
+"""
+The following functions are used for the PH456 essay. The RK4 function describes
+a Runge-Kutta 4 routine, and it is used to solve the VdP Differential Equation
+(DE). Its inputs are x0 (initial amplitude), v0 (initial velocity), tf (final
+time), h (imposed timestep), dvdt (the function to solve), val (the inputs of 
+dvdt, exept x0, v0). it returns the time array t over which the amplitude xpos
+and velocity v were calculated.
+"""
+
 
 def RK4(x0, v0,  tf, h, dvdt, val):
     
@@ -32,6 +41,12 @@ def RK4(x0, v0,  tf, h, dvdt, val):
         v = np.append(v, v_new)
         xpos = np.append(xpos, x_new)
     return t, xpos, v
+
+"""
+The VdP function is the function describing the DE of the VdP Oscillator. Its 
+inputs are t (the time variable), x (the amplitude variable), v (the velocity
+variable) and mu (the nonlinear damping strength).
+"""
 
 def VdP(t, x, v, mu):
     return mu*(1-x**2)*v - x 
